@@ -1,4 +1,5 @@
-# OpKut-OpRes
+# Operations Research
+
 The slide you've uploaded introduces **Operations Research (OR)** as a subfield of **Optimization Methods**. Here's a summarized and clear breakdown:
 
 ---
