@@ -1,3 +1,51 @@
+/*
+Input: 
+    items: list of (value, weight) pairs
+    capacity: maximum weight the knapsack can hold
+
+Output:
+    bestValue: maximum value that can be achieved
+    bestTaken: 0-1 vector indicating which items are taken
+
+1. Sort items in descending order of value-to-weight ratio.
+
+2. Define function bound(node, capacity):
+    - Compute upper bound of node using greedy fractional strategy:
+      Add whole items until capacity is reached.
+      If capacity not full, take fraction of next item.
+
+3. Initialize:
+    - maxValue ← 0
+    - bestTaken ← empty list
+    - stack ← [root node with: level=0, value=0, weight=0, taken=[]]
+
+4. While stack is not empty:
+    a. Pop node from stack
+
+    b. If node.level == total number of items:
+        - Skip to next iteration
+
+    c. Else:
+        i. Consider taking the current item:
+            - If it fits (node.weight + item.weight ≤ capacity):
+                - Create left child node with item taken (1)
+                - Compute bound(left)
+                - If value > maxValue:
+                    - Update maxValue and bestTaken
+                - If bound > maxValue:
+                    - Push left to stack
+
+        ii. Consider NOT taking the current item:
+            - Create right child node with item not taken (0)
+            - Compute bound(right)
+            - If bound > maxValue:
+                - Push right to stack
+
+5. After loop ends, return maxValue and bestTaken.
+
+
+*/ 
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

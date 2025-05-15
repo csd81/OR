@@ -1,3 +1,25 @@
+/*
+
+Input: A, b, c (where Ax <= b, x >= 0, and objective is max cᵀx)
+
+Add slack variables to convert inequalities to equalities.
+Construct the initial tableau T.
+
+while (there exists a negative coefficient in the objective row):
+    1. Select pivot column (most negative coefficient in bottom row).
+    2. For each row i:
+        if tableau[i][pivot_col] > 0:
+            compute ratio = tableau[i][RHS] / tableau[i][pivot_col]
+    3. Choose row with minimum positive ratio → pivot row.
+    4. Perform pivot operation:
+        - Normalize pivot row
+        - Zero out other entries in pivot column
+end while
+
+Output: Optimal solution from tableau
+
+*/ 
+
 #include <iostream>
 #include <vector>
 #include <limits>
